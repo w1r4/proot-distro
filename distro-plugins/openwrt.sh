@@ -37,11 +37,13 @@ TARBALL_STRIP_OPT=1
 # installation. You can use "run_proot_cmd" to execute a given command in
 # proot environment.
 distro_setup() {
+    # Create necessary directories
+    run_proot_cmd mkdir -p /var/lock
+    run_proot_cmd mkdir -p /var/opkg-lists
+    run_proot_cmd mkdir -p /etc/config
+    
     # Update package lists
     run_proot_cmd opkg update
-    
-    # Set up timezone and locale
-    run_proot_cmd mkdir -p /etc/config
     
     # Create a basic network configuration
     run_proot_cmd touch /etc/config/network
