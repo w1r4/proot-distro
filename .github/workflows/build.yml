@@ -87,6 +87,30 @@ jobs:
           name: built-rootfs-riscv64
           path: rootfs/*riscv64*.tar.xz
           if-no-files-found: ignore
+      - name: Upload Artifacts (mips)
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-rootfs-mips
+          path: rootfs/*mips*.tar.xz
+          if-no-files-found: ignore
+      - name: Upload Artifacts (mipsel)
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-rootfs-mipsel
+          path: rootfs/*mipsel*.tar.xz
+          if-no-files-found: ignore
+      - name: Upload Artifacts (mips64)
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-rootfs-mips64
+          path: rootfs/*mips64*.tar.xz
+          if-no-files-found: ignore
+      - name: Upload Artifacts (mips64el)
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-rootfs-mips64el
+          path: rootfs/*mips64el*.tar.xz
+          if-no-files-found: ignore
       - name: Upload Artifacts (x86_64)
         uses: actions/upload-artifact@v4
         with:

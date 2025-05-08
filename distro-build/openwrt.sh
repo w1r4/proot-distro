@@ -14,7 +14,7 @@ bootstrap_distribution() {
     cd "${WORKDIR}/openwrt"
     
     # Download OpenWrt rootfs for different architectures
-    for arch in aarch64 arm x86_64; do
+    for arch in aarch64 arm x86_64 mips mipsel mips64 mips64el; do
         case "$arch" in
             aarch64)
                 rootfs_url="https://downloads.openwrt.org/releases/${dist_version}/targets/armsr/armv8/openwrt-${dist_version}-armsr-armv8-rootfs.tar.gz"
@@ -26,6 +26,22 @@ bootstrap_distribution() {
                 ;;
             x86_64)
                 rootfs_url="https://downloads.openwrt.org/releases/${dist_version}/targets/x86/64/openwrt-${dist_version}-x86-64-rootfs.tar.gz"
+                rootfs_file="${ROOTFS_DIR}/openwrt-${dist_version}-${arch}-rootfs.tar.xz"
+                ;;
+            mips)
+                rootfs_url="https://downloads.openwrt.org/releases/${dist_version}/targets/malta/be/openwrt-${dist_version}-malta-be-rootfs.tar.gz"
+                rootfs_file="${ROOTFS_DIR}/openwrt-${dist_version}-${arch}-rootfs.tar.xz"
+                ;;
+            mipsel)
+                rootfs_url="https://downloads.openwrt.org/releases/${dist_version}/targets/malta/le/openwrt-${dist_version}-malta-le-rootfs.tar.gz"
+                rootfs_file="${ROOTFS_DIR}/openwrt-${dist_version}-${arch}-rootfs.tar.xz"
+                ;;
+            mips64)
+                rootfs_url="https://downloads.openwrt.org/releases/${dist_version}/targets/malta/be64/openwrt-${dist_version}-malta-be64-rootfs.tar.gz"
+                rootfs_file="${ROOTFS_DIR}/openwrt-${dist_version}-${arch}-rootfs.tar.xz"
+                ;;
+            mips64el)
+                rootfs_url="https://downloads.openwrt.org/releases/${dist_version}/targets/malta/le64/openwrt-${dist_version}-malta-le64-rootfs.tar.gz"
                 rootfs_file="${ROOTFS_DIR}/openwrt-${dist_version}-${arch}-rootfs.tar.xz"
                 ;;
         esac
@@ -65,6 +81,16 @@ write_plugin() {
 	TARBALL_SHA256['arm']="$(sha256sum "${ROOTFS_DIR}/openwrt-${dist_version}-arm-rootfs.tar.xz" | awk '{print $1}')"
 	TARBALL_URL['x86_64']="${GIT_RELEASE_URL}/openwrt-${dist_version}-x86_64-rootfs.tar.xz"
 	TARBALL_SHA256['x86_64']="$(sha256sum "${ROOTFS_DIR}/openwrt-${dist_version}-x86_64-rootfs.tar.xz" | awk '{print $1}')"
+	
+	# MIPS architecture support
+	TARBALL_URL['mips']="${GIT_RELEASE_URL}/openwrt-${dist_version}-mips-rootfs.tar.xz"
+	TARBALL_SHA256['mips']="$(sha256sum "${ROOTFS_DIR}/openwrt-${dist_version}-mips-rootfs.tar.xz" | awk '{print $1}')"
+	TARBALL_URL['mipsel']="${GIT_RELEASE_URL}/openwrt-${dist_version}-mipsel-rootfs.tar.xz"
+	TARBALL_SHA256['mipsel']="$(sha256sum "${ROOTFS_DIR}/openwrt-${dist_version}-mipsel-rootfs.tar.xz" | awk '{print $1}')"
+	TARBALL_URL['mips64']="${GIT_RELEASE_URL}/openwrt-${dist_version}-mips64-rootfs.tar.xz"
+	TARBALL_SHA256['mips64']="$(sha256sum "${ROOTFS_DIR}/openwrt-${dist_version}-mips64-rootfs.tar.xz" | awk '{print $1}')"
+	TARBALL_URL['mips64el']="${GIT_RELEASE_URL}/openwrt-${dist_version}-mips64el-rootfs.tar.xz"
+	TARBALL_SHA256['mips64el']=""
 	
 	# OpenWrt doesn't provide official i686 or riscv64 rootfs tarballs
 	# If needed, these could be built from source or obtained from third parties

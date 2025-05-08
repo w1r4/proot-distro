@@ -42,7 +42,7 @@ fi
 GIT_RELEASE_URL="https://github.com/termux/proot-distro/releases/download/${CURRENT_VERSION}"
 
 # Normalize architecture names.
-# Prefer aarch64, arm, i686, riscv64, x86_64 architecture names
+# Prefer aarch64, arm, i686, riscv64, x86_64, mips, mipsel, mips64 architecture names
 # just like used by termux-packages.
 translate_arch() {
 	case "$1" in
@@ -51,6 +51,10 @@ translate_arch() {
 		386|i386|i686|x86) echo "i686";;
 		riscv64) echo "riscv64";;
 		amd64|x86_64) echo "x86_64";;
+		mips|mipseb) echo "mips";;
+		mipsel) echo "mipsel";;
+		mips64|mips64eb) echo "mips64";;
+		mips64el) echo "mips64el";;
 		*)
 			echo "translate_arch(): unknown arch '$1'" >&2
 			exit 1

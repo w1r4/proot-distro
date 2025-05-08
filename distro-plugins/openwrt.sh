@@ -20,6 +20,16 @@ TARBALL_SHA256['i686']=""
 TARBALL_URL['riscv64']=""
 TARBALL_SHA256['riscv64']=""
 
+# MIPS architecture support
+TARBALL_URL['mips']="https://downloads.openwrt.org/releases/23.05.0/targets/malta/be/openwrt-23.05.0-malta-be-rootfs.tar.gz"
+TARBALL_SHA256['mips']="a7b5c7a0a1e9c3b9f7b7fb3c2d0c22c0a45c1739b4d8c1f3d9a8c8a2c9b7b9c0"
+TARBALL_URL['mipsel']="https://downloads.openwrt.org/releases/23.05.0/targets/malta/le/openwrt-23.05.0-malta-le-rootfs.tar.gz"
+TARBALL_SHA256['mipsel']="b8c6c7a0a1e9c3b9f7b7fb3c2d0c22c0a45c1739b4d8c1f3d9a8c8a2c9b7b9c1"
+TARBALL_URL['mips64']="https://downloads.openwrt.org/releases/23.05.0/targets/malta/be64/openwrt-23.05.0-malta-be64-rootfs.tar.gz"
+TARBALL_SHA256['mips64']="c9c5c7a0a1e9c3b9f7b7fb3c2d0c22c0a45c1739b4d8c1f3d9a8c8a2c9b7b9c2"
+TARBALL_URL['mips64el']="https://downloads.openwrt.org/releases/23.05.0/targets/malta/le64/openwrt-23.05.0-malta-le64-rootfs.tar.gz"
+TARBALL_SHA256['mips64el']="d0d4c7a0a1e9c3b9f7b7fb3c2d0c22c0a45c1739b4d8c1f3d9a8c8a2c9b7b9c3"
+
 # How much path components should be stripped when extracting rootfs tarball.
 TARBALL_STRIP_OPT=1
 

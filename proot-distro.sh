@@ -208,6 +208,12 @@ detect_cpu_arch() {
 		"UCB RISC-V") cpu_arch="riscv64";;
 		"Intel 80386") cpu_arch="i686";;
 		"x86-64") cpu_arch="x86_64";;
+		"MIPS") cpu_arch="mips";;
+		"MIPS, MIPS-I") cpu_arch="mips";;
+		"MIPS, MIPS-III") cpu_arch="mips";;
+		"MIPS, MIPS-IV") cpu_arch="mips";;
+		"MIPS, N32") cpu_arch="mips64";;
+		"MIPS, MIPS64") cpu_arch="mips64";;
 		*) cpu_arch="unknown";;
 	esac
 
@@ -622,6 +628,10 @@ run_proot_cmd() {
 					cpu_emulator_path="@TERMUX_PREFIX@/bin/qemu-i386"
 				fi
 				;;
+			mips) cpu_emulator_path="@TERMUX_PREFIX@/bin/qemu-mips";;
+			mipsel) cpu_emulator_path="@TERMUX_PREFIX@/bin/qemu-mipsel";;
+			mips64) cpu_emulator_path="@TERMUX_PREFIX@/bin/qemu-mips64";;
+			mips64el) cpu_emulator_path="@TERMUX_PREFIX@/bin/qemu-mips64el";;
 			riscv64) cpu_emulator_path="@TERMUX_PREFIX@/bin/qemu-riscv64";;
 			x86_64)
 				if [ "$PROOT_DISTRO_X64_EMULATOR" = "QEMU" ]; then
@@ -636,7 +646,7 @@ run_proot_cmd() {
 				;;
 			*)
 				msg
-				msg "${BRED}Error: DISTRO_ARCH has unknown value '$DISTRO_ARCH'. Valid values are: aarch64, arm, i686, riscv64, x86_64."
+				msg "${BRED}Error: DISTRO_ARCH has unknown value '$DISTRO_ARCH'. Valid values are: aarch64, arm, i686, mips, mipsel, mips64, mips64el, riscv64, x86_64."
 				msg
 				return 1
 			;;
@@ -651,6 +661,10 @@ run_proot_cmd() {
 					aarch64) cpu_emulator_pkg="qemu-user-aarch64";;
 					arm) cpu_emulator_pkg="qemu-user-arm";;
 					i686) cpu_emulator_pkg="qemu-user-i386";;
+					mips) cpu_emulator_pkg="qemu-user-mips";;
+					mipsel) cpu_emulator_pkg="qemu-user-mipsel";;
+					mips64) cpu_emulator_pkg="qemu-user-mips64";;
+					mips64el) cpu_emulator_pkg="qemu-user-mips64el";;
 					riscv64) cpu_emulator_pkg="qemu-user-riscv64";;
 					x86_64)
 						if [ "$PROOT_DISTRO_X64_EMULATOR" = "QEMU" ]; then
@@ -1742,6 +1756,10 @@ command_login() {
 					need_cpu_emulator=false
 				fi
 				;;
+			mips) cpu_emulator_path="@TERMUX_PREFIX@/bin/qemu-mips";;
+			mipsel) cpu_emulator_path="@TERMUX_PREFIX@/bin/qemu-mipsel";;
+			mips64) cpu_emulator_path="@TERMUX_PREFIX@/bin/qemu-mips64";;
+			mips64el) cpu_emulator_path="@TERMUX_PREFIX@/bin/qemu-mips64el";;
 			riscv64) cpu_emulator_path="@TERMUX_PREFIX@/bin/qemu-riscv64";;
 			x86_64)
 				if [ "$PROOT_DISTRO_X64_EMULATOR" = "QEMU" ]; then
@@ -1756,7 +1774,7 @@ command_login() {
 				;;
 			*)
 				msg
-				msg "${BRED}Error: DISTRO_ARCH has unknown value '${YELLOW}${target_arch}${BRED}'. Valid values are: aarch64, arm, i686, riscv64, x86_64."
+				msg "${BRED}Error: DISTRO_ARCH has unknown value '${YELLOW}${target_arch}${BRED}'. Valid values are: aarch64, arm, i686, mips, mipsel, mips64, mips64el, riscv64, x86_64."
 				msg
 				return 1
 			;;
@@ -1771,6 +1789,10 @@ command_login() {
 					aarch64) cpu_emulator_pkg="qemu-user-aarch64";;
 					arm) cpu_emulator_pkg="qemu-user-arm";;
 					i686) cpu_emulator_pkg="qemu-user-i386";;
+					mips) cpu_emulator_pkg="qemu-user-mips";;
+					mipsel) cpu_emulator_pkg="qemu-user-mipsel";;
+					mips64) cpu_emulator_pkg="qemu-user-mips64";;
+					mips64el) cpu_emulator_pkg="qemu-user-mips64el";;
 					riscv64) cpu_emulator_pkg="qemu-user-riscv64";;
 					x86_64)
 						if [ "$PROOT_DISTRO_X64_EMULATOR" = "QEMU" ]; then
