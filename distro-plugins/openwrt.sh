@@ -6,12 +6,12 @@ DISTRO_COMMENT="A Linux operating system targeting embedded devices."
 
 # OpenWrt official releases for different architectures
 # Using the latest stable release URLs
-TARBALL_URL['aarch64']="https://downloads.openwrt.org/releases/23.05.2/targets/armsr/armv8/openwrt-23.05.2-armsr-armv8-rootfs.tar.gz"
-TARBALL_SHA256['aarch64']="ab1047dfd510bfc5dee745115285df95205bd7add61e9f6c00bf784450df10bf"
-TARBALL_URL['arm']="https://downloads.openwrt.org/releases/23.05.2/targets/armsr/armv7/openwrt-23.05.2-armsr-armv7-rootfs.tar.gz"
-TARBALL_SHA256['arm']="5d90fddeba5758d44f1e67edde26a0593d9d2266a7110f1f09f543ac4c08ea2b"
-TARBALL_URL['x86_64']="https://downloads.openwrt.org/releases/23.05.2/targets/x86/64/openwrt-23.05.2-x86-64-rootfs.tar.gz"
-TARBALL_SHA256['x86_64']="dc5379af73ebd6845da419ccf034987dc0c8b26e503cefd5231b05a1ff8cc26c"
+TARBALL_URL['aarch64']="https://downloads.openwrt.org/releases/23.05.0/targets/armsr/armv8/openwrt-23.05.0-armsr-armv8-rootfs.tar.gz"
+TARBALL_SHA256['aarch64']="080a7b6bc08d7aab2202791146888fbe363e36354e10eff66dbc92c9508b59c1"
+TARBALL_URL['arm']="https://downloads.openwrt.org/releases/23.05.0/targets/armsr/armv7/openwrt-23.05.0-armsr-armv7-rootfs.tar.gz"
+TARBALL_SHA256['arm']="d3c5a51f9e8fbe3eb4b2e647afca5c6e7c32ed51f0dc0f6a8b480422863e132c"
+TARBALL_URL['x86_64']="https://downloads.openwrt.org/releases/23.05.0/targets/x86/64/openwrt-23.05.0-x86-64-rootfs.tar.gz"
+TARBALL_SHA256['x86_64']="f8f4f3f56b1c9e3bb7b08421912d2b7908b31e0be2c0e0e09b7d6ee7d902c5d7"
 
 # OpenWrt doesn't provide official i686 or riscv64 rootfs tarballs
 # If needed, these could be built from source or obtained from third parties
